@@ -29,8 +29,17 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: Container(
-            color: Colors.blue,
-            height: 150 - 144,
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(18.0),
+                topRight: Radius.circular(18.0),
+              ),
+              gradient: LinearGradient(colors: [
+                Colors.grey.withOpacity(0.0),
+                Colors.white.withOpacity(0.2),
+              ]),
+            ),
+            height: 60,
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -40,25 +49,43 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     icon: const Icon(
                       Icons.home_outlined,
                       color: Colors.white,
-                      size: 15,
+                      size: 25,
                     ),
                   ),
                   IconButton(
                     enableFeedback: false,
                     onPressed: () {},
                     icon: const Icon(
-                      Icons.home_outlined,
+                      Icons.play_circle_outline_outlined,
                       color: Colors.white,
-                      size: 15,
+                      size: 25,
                     ),
                   ),
                   IconButton(
                     enableFeedback: false,
                     onPressed: () {},
                     icon: const Icon(
-                      Icons.home_outlined,
+                      Icons.search,
                       color: Colors.white,
-                      size: 15,
+                      size: 25,
+                    ),
+                  ),
+                  IconButton(
+                    enableFeedback: false,
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.favorite_border_rounded,
+                      color: Colors.white,
+                      size: 25,
+                    ),
+                  ),
+                  IconButton(
+                    enableFeedback: false,
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.person_outline,
+                      color: Colors.white,
+                      size: 25,
                     ),
                   ),
                 ])),
@@ -73,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               ],
             ),
           ),
-          child: Column(
+          child: ListView(
             children: [
               Padding(
                 padding: const EdgeInsets.all(24.0),
@@ -161,91 +188,89 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                         width: double.maxFinite,
                         height: 600,
                         // color: Colors.red,
-                        child: SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              const Carousel(),
-                              // SizedBox(height: 25, width: double.maxFinite),
-                              Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: Row(children: const [
-                                  Text("Recent Watched", style: _fontStyle),
-                                  Spacer(),
-                                  Text("See all", style: _seeAll)
-                                ]),
-                              ),
-                              SizedBox(
-                                width: double.maxFinite,
-                                height: 150,
-                                // color: Colors.green,
-                                child: Expanded(
-                                  child: ListView.builder(
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: urlImages.length,
-                                    itemBuilder:
-                                        (BuildContext context, int index) =>
-                                            Padding(
-                                      padding: const EdgeInsets.only(
-                                        left: 10.0,
-                                        right: 10.0,
-                                      ),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(8),
-                                        child: SizedBox(
-                                          width: 110,
-                                          height: 130,
-                                          child: Image.network(
-                                            urlImages[index],
-                                            fit: BoxFit.cover,
-                                          ),
+                        child: ListView(
+                          children: [
+                            const Carousel(),
+                            // SizedBox(height: 25, width: double.maxFinite),
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Row(children: const [
+                                Text("Recent Watched", style: _fontStyle),
+                                Spacer(),
+                                Text("See all", style: _seeAll)
+                              ]),
+                            ),
+                            SizedBox(
+                              width: double.maxFinite,
+                              height: 150,
+                              // color: Colors.green,
+                              child: Expanded(
+                                child: ListView.builder(
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: urlImages.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) =>
+                                          Padding(
+                                    padding: const EdgeInsets.only(
+                                      left: 10.0,
+                                      right: 10.0,
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(8),
+                                      child: SizedBox(
+                                        width: 110,
+                                        height: 130,
+                                        child: Image.network(
+                                          urlImages[index],
+                                          fit: BoxFit.cover,
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: Row(children: const [
-                                  Text("My Favorites", style: _fontStyle),
-                                  Spacer(),
-                                  Text("See all", style: _seeAll)
-                                ]),
-                              ),
-                              SizedBox(
-                                width: double.maxFinite,
-                                height: 150,
-                                // color: Colors.green,
-                                child: Expanded(
-                                  child: ListView.builder(
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: urlImages.length,
-                                    itemBuilder:
-                                        (BuildContext context, int index) =>
-                                            Padding(
-                                      padding: const EdgeInsets.only(
-                                        left: 10.0,
-                                        right: 10.0,
-                                      ),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(8),
-                                        child: SizedBox(
-                                          width: 110,
-                                          height: 130,
-                                          child: Image.network(
-                                            urlImages[index],
-                                            fit: BoxFit.cover,
-                                          ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Row(children: const [
+                                Text("My Favorites", style: _fontStyle),
+                                Spacer(),
+                                Text("See all", style: _seeAll)
+                              ]),
+                            ),
+                            SizedBox(
+                              width: double.maxFinite,
+                              height: 150,
+                              // color: Colors.green,
+                              child: Expanded(
+                                child: ListView.builder(
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: urlImages.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) =>
+                                          Padding(
+                                    padding: const EdgeInsets.only(
+                                      left: 10.0,
+                                      right: 10.0,
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(8),
+                                      child: SizedBox(
+                                        width: 110,
+                                        height: 130,
+                                        child: Image.network(
+                                          urlImages[index],
+                                          fit: BoxFit.cover,
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         )),
                     Container(
                         width: double.maxFinite,
@@ -305,10 +330,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     );
   }
 
-  Widget buildImage(String urlImage, int index) => Container(
-        margin: const EdgeInsets.symmetric(vertical: 0.0),
-        color: Colors.grey,
-        width: 200,
-        // child: Image.network(urlImage, fit: BoxFit.cover)
-      );
+  // Widget buildImage(String urlImage, int index) => Container(
+  //       margin: const EdgeInsets.symmetric(vertical: 0.0),
+  //       color: Colors.grey,
+  //       width: 200,
+  //       // child: Image.network(urlImage, fit: BoxFit.cover)
+  //     );
 }
