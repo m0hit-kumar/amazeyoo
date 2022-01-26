@@ -115,6 +115,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                         left: 12,
                       ),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
                           Text("Hello,",
                               // textAlign: TextAlign.left,
