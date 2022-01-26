@@ -188,7 +188,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                         width: double.maxFinite,
                         height: 600,
                         // color: Colors.red,
-                        child: Column(
+                        child: ListView(
                           children: [
                             const Carousel(),
                             // SizedBox(height: 25, width: double.maxFinite),
