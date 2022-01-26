@@ -1,3 +1,4 @@
+import 'package:amazeyoo/links.dart';
 import 'package:flutter/material.dart';
 
 class AboutScreen extends StatefulWidget {
@@ -9,15 +10,6 @@ class AboutScreen extends StatefulWidget {
 }
 
 class _AboutScreenState extends State<AboutScreen> {
-  final castImages = [
-    "https://i.pinimg.com/236x/8a/e0/1c/8ae01c2f04a9f7139fe211bcafad633f.jpg",
-    "https://i.pinimg.com/236x/8e/ee/2d/8eee2d48a3613f6cf97716cbb5a24a65.jpg",
-    "https://i.pinimg.com/236x/36/0e/6e/360e6e1318dd257c51f01f37cf27c862.jpg",
-    "https://i.pinimg.com/474x/5c/3e/f8/5c3ef83becfd62b66b3b9726904e5589.jpg",
-    "https://i.pinimg.com/474x/69/86/bf/6986bf2e29bee5fc17d7aa9db088fabb.jpg",
-    "https://i.pinimg.com/474x/79/0d/f9/790df93834955042efb2a096f59f1f4b.jpg",
-  ];
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
