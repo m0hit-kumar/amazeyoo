@@ -1,3 +1,4 @@
+import 'package:amazeyoo/bottomnavigator.dart';
 import 'package:amazeyoo/links.dart';
 import 'package:flutter/material.dart';
 
@@ -14,66 +15,8 @@ class _AboutScreenState extends State<AboutScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      bottomNavigationBar: Container(
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(18.0),
-              topRight: Radius.circular(18.0),
-            ),
-            gradient: LinearGradient(colors: [
-              Colors.grey.withOpacity(0.0),
-              Colors.white.withOpacity(0.2),
-            ]),
-          ),
-          height: 60,
-          child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-            IconButton(
-              enableFeedback: false,
-              onPressed: () {},
-              icon: const Icon(
-                Icons.home_outlined,
-                color: Colors.white,
-                size: 25,
-              ),
-            ),
-            IconButton(
-              enableFeedback: false,
-              onPressed: () {},
-              icon: const Icon(
-                Icons.play_circle_outline_outlined,
-                color: Colors.white,
-                size: 25,
-              ),
-            ),
-            IconButton(
-              enableFeedback: false,
-              onPressed: () {},
-              icon: const Icon(
-                Icons.search,
-                color: Colors.white,
-                size: 25,
-              ),
-            ),
-            IconButton(
-              enableFeedback: false,
-              onPressed: () {},
-              icon: const Icon(
-                Icons.favorite_border_rounded,
-                color: Colors.white,
-                size: 25,
-              ),
-            ),
-            IconButton(
-              enableFeedback: false,
-              onPressed: () {},
-              icon: const Icon(
-                Icons.person_outline,
-                color: Colors.white,
-                size: 25,
-              ),
-            ),
-          ])),
+      extendBody: true,
+      bottomNavigationBar: const BottomNavigation(),
       backgroundColor: Colors.black,
       body: ListView(
         children: <Widget>[
@@ -91,7 +34,9 @@ class _AboutScreenState extends State<AboutScreen> {
                   },
                   blendMode: BlendMode.dstIn,
                   child: Image.network(widget.url,
-                      height: 500.0, fit: BoxFit.cover)),
+                      width: double.maxFinite,
+                      height: 500.0,
+                      fit: BoxFit.cover)),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -258,40 +203,77 @@ class _AboutScreenState extends State<AboutScreen> {
                     ),
                   ),
                   Container(
-                    color: const Color(0xFFD8CBAB),
+                    margin: const EdgeInsets.only(
+                      left: 24.0,
+                      right: 24.0,
+                    ),
+                    width: double.maxFinite,
                     height: 5,
-                    width: MediaQuery.of(context).size.width - 40,
+                    alignment: Alignment.centerLeft,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(45),
+
+                      color: const Color(0xFF433D37), //blue
+                    ),
                     child: Container(
-                      color: const Color(0xFF423D35),
+                      width: 210,
                       height: 5,
-                      width: MediaQuery.of(context).size.width - 60,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(45),
+                          gradient: const LinearGradient(colors: [
+                            Color(0xFFD8C39B),
+                            Color(0xFF986E3C),
+                          ])),
+                      alignment: Alignment.center,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
+                  Container(
+                    width: double.maxFinite,
+                    height: 55,
+                    margin: const EdgeInsets.all(18.0),
+                    // color: Colors.green,
                     child: Stack(
-                      clipBehavior: Clip.none,
-                      fit: StackFit.passthrough,
-                      children: [
-                        Container(
-                            height: 50,
-                            child: const Center(
-                                child: Text("Continue Watch",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                      fontFamily: "San Francisco",
-                                    ))),
-                            width: MediaQuery.of(context).size.width - 40,
+                      children: <Widget>[
+                        Positioned(
+                          top: 5,
+                          left: 30,
+                          width: 280,
+                          height: 50,
+                          child: Container(
+                            height: 100,
+                            width: 100,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                                gradient: const LinearGradient(
-                                    begin: Alignment.centerLeft,
-                                    end: Alignment.centerRight,
-                                    colors: [
-                                      Color(0xFFD8C39B),
-                                      Color(0xFF986E3C),
-                                    ]))),
+                              border: Border.all(
+                                color: const Color(0xFF986E3C),
+                              ),
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 0,
+                          left: 0,
+                          width: 300,
+                          child: Container(
+                              height: 50,
+                              child: const Center(
+                                  child: Text("Continue Watch",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 14,
+                                        fontFamily: "San Francisco",
+                                      ))),
+                              width: MediaQuery.of(context).size.width - 60,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  gradient: const LinearGradient(
+                                      begin: Alignment.centerLeft,
+                                      end: Alignment.centerRight,
+                                      colors: [
+                                        Color(0xFFD8C39B),
+                                        Color(0xFF986E3C),
+                                      ]))),
+                        ),
                       ],
                     ),
                   ),
