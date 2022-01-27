@@ -21,5 +21,5 @@ final castImages = [
   "https://i.pinimg.com/474x/79/0d/f9/790df93834955042efb2a096f59f1f4b.jpg",
 ];
 
-final List<String> titles = ["Spider Man", "Alladin", "Beautiy And the Beast"];
+final List<String> titles = ["Spider Man", "Alladin", "Beautiy And Beast"];
 final List<String> subs = ["Part 1", "Epiosode", "Epiosode 2"];
