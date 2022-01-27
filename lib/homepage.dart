@@ -12,6 +12,8 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
+double? currentPageValue;
+
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
@@ -28,9 +30,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
     TabController _tabController = TabController(length: 4, vsync: this);
 
-    final controller =
-        PageController(initialPage: 1, viewportFraction: 0.8, keepPage: true);
-
+    PageController controller =
+        PageController(initialPage: 1, viewportFraction: 0.6, keepPage: true);
+    // double? currentPageValue;
+    // controller.addListener(() {
+    //   setState(() {
+    //     // print("dcssssssssssssssssssssss");
+    //     // print(controller.page);
+    //     currentPageValue = controller.page;
+    //     // print(currentPageValue);
+    //   });
+    // });
     return SafeArea(
       child: Scaffold(
           extendBody: true,
@@ -52,49 +62,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // Container(
-                  //   height: 250,
-                  //   color: Colors.red,
-                  //   child: PageView.builder(
-                  //     controller: controller,
-                  //     scrollDirection: Axis.horizontal,
-                  //     itemCount: urlImages.length,
-                  //     itemBuilder: (BuildContext context, int index) => Padding(
-                  //       padding: const EdgeInsets.only(
-                  //         left: 10.0,
-                  //         right: 10.0,
-                  //       ),
-                  //       child: GestureDetector(
-                  //         onTap: () {
-                  //           Navigator.push(
-                  //               context,
-                  //               MaterialPageRoute(
-                  //                   builder: (context) =>
-                  //                       AboutScreen(url: urlImages[index])));
-                  //         },
-                  //         child: ClipRRect(
-                  //           borderRadius: BorderRadius.circular(8),
-                  //           child: SizedBox(
-                  //             width: 110,
-                  //             height: 130,
-                  //             child: Image.network(
-                  //               urlImages[index],
-                  //               fit: BoxFit.cover,
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
-                  // Center(
-                  //   child: SmoothPageIndicator(
-                  //       controller: controller,
-                  //       count: urlImages.length,
-                  //       effect: const ColorTransitionEffect(
-                  //           activeDotColor: Colors.red, dotColor: Colors.blue)),
-                  // ),
-
                   Padding(
                     padding: const EdgeInsets.all(24.0),
                     child: Row(
@@ -146,7 +113,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       ],
                     ),
                   ),
-
                   Container(
                     margin: const EdgeInsets.only(bottom: 15),
                     // color: Colors.green,
@@ -173,14 +139,28 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     ),
                   ),
                   SizedBox(
-                    height: 250,
+                    height: 260,
                     // color: Colors.red,
                     child: PageView.builder(
-                        controller: controller,
-                        scrollDirection: Axis.horizontal,
-                        itemCount: imglist.length,
-                        itemBuilder: (BuildContext context, int index) =>
-                            imageSliders(context, index)),
+                      controller: controller,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: imglist.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        controller.addListener(() {
+                          setState(() {
+                            // print("dcssssssssssssssssssssss");
+                            // print(controller.page);
+                            currentPageValue = controller.page;
+                            // print(
+                            //     '1111111111111111111111111 $currentPageValue');
+                          });
+                        });
+                        // print(
+                        //     '000000000000000000000000000000 $currentPageValue');
+                        return imageSliders(context, index,
+                            currentPageValue: currentPageValue);
+                      },
+                    ),
                   ),
                   Center(
                     child: SmoothPageIndicator(
@@ -192,7 +172,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             activeDotColor: Colors.white,
                             dotColor: Colors.grey)),
                   ),
-
                   SizedBox(
                     width: double.maxFinite,
                     height: 600,
@@ -321,87 +300,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             height: 600,
                             color: Colors.pink),
                       ],
-                      // children: [
-                      //   Container(
-                      //     width: double.maxFinite,
-                      //     height: 800,
-                      //     // color: Colors.yellow,
-                      //     child: CarouselSlider.builder(
-                      //         itemCount: urlImages.length,
-                      //         itemBuilder: (context, index, realIndex) {
-                      //           final urlImage = urlImages[index];
-                      //           return buildImage(urlImage, index);
-                      //         },
-                      //         options: CarouselOptions(height: 200)),
-                      //   ),
-                      //   ListView.builder(
-                      //       itemCount: 5,
-                      //       itemBuilder: (BuildContext context, int index) {
-                      //         return const ListTile(
-                      //           trailing: Text(
-                      //             "GFG",
-                      //           ),
-                      //         );
-                      //       }),
-                      //   Container(
-                      //     width: double.maxFinite,
-                      //     height: 800,
-                      //     color: Colors.white,
-                      //     child: Text("nk"),
-                      //   ),
-                      //   Container(
-                      //     width: double.maxFinite,
-                      //     height: 800,
-                      //     color: Colors.white,
-                      //     child: Text("nk"),
-                      //   ),
-                      // ],
                     ),
                   )
-
-                  // const SizedBox(height: 200),
-                  // Container(
-                  //   height: 250,
-                  //   color: Colors.red,
-                  //   child: PageView.builder(
-                  //     controller: controller,
-                  //     scrollDirection: Axis.horizontal,
-                  //     itemCount: urlImages.length,
-                  //     itemBuilder: (BuildContext context, int index) => Padding(
-                  //       padding: const EdgeInsets.only(
-                  //         left: 10.0,
-                  //         right: 10.0,
-                  //       ),
-                  //       child: GestureDetector(
-                  //         onTap: () {
-                  //           Navigator.push(
-                  //               context,
-                  //               MaterialPageRoute(
-                  //                   builder: (context) =>
-                  //                       AboutScreen(url: urlImages[index])));
-                  //         },
-                  //         child: ClipRRect(
-                  //           borderRadius: BorderRadius.circular(8),
-                  //           child: SizedBox(
-                  //             width: 110,
-                  //             height: 130,
-                  //             child: Image.network(
-                  //               urlImages[index],
-                  //               fit: BoxFit.cover,
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
-                  // Center(
-                  //   child: SmoothPageIndicator(
-                  //       controller: controller,
-                  //       count: urlImages.length,
-                  //       effect: const ColorTransitionEffect(
-                  //           activeDotColor: Colors.red, dotColor: Colors.blue)),
-                  // ),
                 ],
               ),
             ),

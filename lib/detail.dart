@@ -3,8 +3,8 @@ import 'package:amazeyoo/links.dart';
 import 'package:flutter/material.dart';
 
 class AboutScreen extends StatefulWidget {
-  final String url;
   const AboutScreen({Key? key, required this.url}) : super(key: key);
+  final String url;
 
   @override
   State<AboutScreen> createState() => _AboutScreenState();
