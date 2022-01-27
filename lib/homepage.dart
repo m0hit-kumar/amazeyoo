@@ -1,4 +1,8 @@
+// ignore_for_file: unused_local_variable
+
+import 'package:amazeyoo/bottomnavigator.dart';
 import 'package:amazeyoo/carousel.dart';
+import 'package:amazeyoo/detail.dart';
 import 'package:amazeyoo/links.dart';
 import 'package:flutter/material.dart';
 
@@ -28,67 +32,71 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
     return SafeArea(
       child: Scaffold(
-        bottomNavigationBar: Container(
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(18.0),
-                topRight: Radius.circular(18.0),
-              ),
-              gradient: LinearGradient(colors: [
-                Colors.grey.withOpacity(0.0),
-                Colors.white.withOpacity(0.2),
-              ]),
-            ),
-            height: 60,
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  IconButton(
-                    enableFeedback: false,
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.home_outlined,
-                      color: Colors.white,
-                      size: 25,
-                    ),
-                  ),
-                  IconButton(
-                    enableFeedback: false,
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.play_circle_outline_outlined,
-                      color: Colors.white,
-                      size: 25,
-                    ),
-                  ),
-                  IconButton(
-                    enableFeedback: false,
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.search,
-                      color: Colors.white,
-                      size: 25,
-                    ),
-                  ),
-                  IconButton(
-                    enableFeedback: false,
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.favorite_border_rounded,
-                      color: Colors.white,
-                      size: 25,
-                    ),
-                  ),
-                  IconButton(
-                    enableFeedback: false,
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.person_outline,
-                      color: Colors.white,
-                      size: 25,
-                    ),
-                  ),
-                ])),
+        extendBody: true,
+
+        // bottomNavigationBar: Container(
+        //     decoration: BoxDecoration(
+        //       borderRadius: const BorderRadius.only(
+        //         topLeft: Radius.circular(18.0),
+        //         topRight: Radius.circular(18.0),
+        //       ),
+        //       gradient: LinearGradient(colors: [
+        //         Colors.grey.withOpacity(0.0),
+        //         Colors.white.withOpacity(0.2),
+        //       ]),
+        //     ),
+        //     height: 60,
+        //     child: Row(
+        //         mainAxisAlignment: MainAxisAlignment.spaceAround,
+        //         children: [
+        //           IconButton(
+        //             enableFeedback: false,
+        //             onPressed: () {},
+        //             icon: const Icon(
+        //               Icons.home_outlined,
+        //               color: Colors.white,
+        //               size: 25,
+        //             ),
+        //           ),
+        //           IconButton(
+        //             enableFeedback: false,
+        //             onPressed: () {},
+        //             icon: const Icon(
+        //               Icons.play_circle_outline_outlined,
+        //               color: Colors.white,
+        //               size: 25,
+        //             ),
+        //           ),
+        //           IconButton(
+        //             enableFeedback: false,
+        //             onPressed: () {},
+        //             icon: const Icon(
+        //               Icons.search,
+        //               color: Colors.white,
+        //               size: 25,
+        //             ),
+        //           ),
+        //           IconButton(
+        //             enableFeedback: false,
+        //             onPressed: () {},
+        //             icon: const Icon(
+        //               Icons.favorite_border_rounded,
+        //               color: Colors.white,
+        //               size: 25,
+        //             ),
+        //           ),
+        //           IconButton(
+        //             enableFeedback: false,
+        //             onPressed: () {},
+        //             icon: const Icon(
+        //               Icons.person_outline,
+        //               color: Colors.white,
+        //               size: 25,
+        //             ),
+        //           ),
+        //         ])),
+
+        bottomNavigationBar: const BottomNavigation(),
         body: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -153,7 +161,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   ],
                 ),
               ),
-              SizedBox(
+              Container(
+                margin: const EdgeInsets.only(bottom: 15),
                 // color: Colors.green,
                 width: double.maxFinite,
                 height: 20,
@@ -177,7 +186,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   ],
                 ),
               ),
-              const SizedBox(height: 15, width: double.maxFinite),
               SizedBox(
                 width: double.maxFinite,
                 height: 600,
@@ -217,14 +225,25 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                       left: 10.0,
                                       right: 10.0,
                                     ),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(8),
-                                      child: SizedBox(
-                                        width: 110,
-                                        height: 130,
-                                        child: Image.network(
-                                          urlImages[index],
-                                          fit: BoxFit.cover,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    AboutScreen(
+                                                        url:
+                                                            urlImages[index])));
+                                      },
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(8),
+                                        child: SizedBox(
+                                          width: 110,
+                                          height: 130,
+                                          child: Image.network(
+                                            urlImages[index],
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -256,14 +275,25 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                       left: 10.0,
                                       right: 10.0,
                                     ),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(8),
-                                      child: SizedBox(
-                                        width: 110,
-                                        height: 130,
-                                        child: Image.network(
-                                          urlImages[index],
-                                          fit: BoxFit.cover,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    AboutScreen(
+                                                        url:
+                                                            urlImages[index])));
+                                      },
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(8),
+                                        child: SizedBox(
+                                          width: 110,
+                                          height: 130,
+                                          child: Image.network(
+                                            urlImages[index],
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                     ),
